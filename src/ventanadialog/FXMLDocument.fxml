@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="520.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ventanadialog.FXMLDocumentController">
+   <children>
+      <Button fx:id="alertInfo" layoutX="45.0" layoutY="45.0" mnemonicParsing="false" onAction="#alertas" text="Mostrar alerta Información" />
+      <Button fx:id="alertConf" layoutX="45.0" layoutY="137.0" mnemonicParsing="false" onAction="#alertas" text="Mostrar alerta Confirmacion" />
+      <Button fx:id="inputDialog" layoutX="45.0" layoutY="232.0" mnemonicParsing="false" onAction="#alertas" text="Mostrar Input Dialog" />
+      <Button fx:id="alertWarning" layoutX="291.0" layoutY="45.0" mnemonicParsing="false" onAction="#alertas" text="Mostrar alerta Warning" />
+      <Button fx:id="alertConfVarios" layoutX="291.0" layoutY="137.0" mnemonicParsing="false" onAction="#alertas" text="Mostrar alerta Confirmacion Varios" />
+      <Button fx:id="inputDialogVarios" layoutX="291.0" layoutY="232.0" mnemonicParsing="false" onAction="#alertas" text="Mostrar Input Dialog Varios" />
+   </children>
+</AnchorPane>
