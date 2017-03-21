@@ -9,10 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.GridPane;
 
 public class FXMLDocumentController implements Initializable {
 
@@ -36,36 +36,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void alertas(ActionEvent event) {
-        Alert alert;
-        boolean bucle = false;
-        
+
         if (alertInfo.isFocused()) {
             information();
 
         } else if (alertConf.isFocused()) {
-            do {
-                alert = new Alert(AlertType.CONFIRMATION);
+            confirmation();
 
-                ButtonType botonSi = new ButtonType("Si");
-                ButtonType botonNo = new ButtonType("No");
-                ButtonType botonMeAbstengo = new ButtonType("Me Abstengo");
+        } else if (inputDialog.isFocused()) {
+            inputDialog();
+            GridPane grid = new GridPane();
 
-                alert.getButtonTypes().setAll(botonSi, botonNo, botonMeAbstengo);
-
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == botonSi) {
-                    information();
-                    bucle = true;
-                } else if (result.get() == botonNo) {
-                    error();
-                    bucle = true;
-                } else if (result.get() == botonMeAbstengo) {
-                    warning();
-                }
-            } while (!bucle);
-
-        } else {
-            System.out.println("oeloco");
+            grid.add(new Label("Gracias"), 50, 50);
         }
 
     }
@@ -88,16 +70,28 @@ public class FXMLDocumentController implements Initializable {
         alert.showAndWait();
     }
 
-    public Optional<ButtonType> confirmation() {
+    public void confirmation() {
+
         Alert alert;
         alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Módulo de Confirmacion");
         alert.setHeaderText("Encuesta sobre el curso de JAVA FX");
         alert.setContentText("¿Te gusta el curso de Java FX?");
 
-        Optional<ButtonType> result = alert.showAndWait();
+        ButtonType botonSi = new ButtonType("Si");
+        ButtonType botonNo = new ButtonType("No");
+        ButtonType botonMeAbstengo = new ButtonType("Me Abstengo");
 
-        return result;
+        alert.getButtonTypes().setAll(botonSi, botonNo, botonMeAbstengo);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == botonSi) {
+            information();
+        } else if (result.get() == botonNo) {
+            error();
+        } else if (result.get() == botonMeAbstengo) {
+            warning();
+        }
     }
 
     public void error() {
@@ -107,6 +101,16 @@ public class FXMLDocumentController implements Initializable {
         alert.setHeaderText("Encuesta sobre el curso de JAVA FX");
         alert.setContentText("Intentaremos mejorar");
         alert.showAndWait();
+    }
+
+    public void inputDialog() {
+        TextInputDialog dialog;
+        dialog = new TextInputDialog("name");
+
+        dialog.setTitle("Módulo de programación");
+        dialog.setHeaderText("Ventana para solicitar tu nombre");
+        dialog.setContentText("nombre");
+
     }
 
 }
